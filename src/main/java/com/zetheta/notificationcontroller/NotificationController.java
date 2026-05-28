@@ -1,5 +1,6 @@
 package com.zetheta.notificationcontroller;
 
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zetheta.notificationmodel.Notification;
 import com.zetheta.notificationservice.NotificationService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/email")
@@ -23,6 +26,12 @@ public class NotificationController {
 	@PostMapping("/notification")
 	public void addNotification(@RequestBody Notification notify) {
 		service.addNotification(notify);
+	}
+	@GetMapping("/security")
+	public CsrfToken getSecurity(HttpServletRequest request) {
+		return (CsrfToken) request.getAttribute("_csrf");
+		
+		
 	}
 	
 }
