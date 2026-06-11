@@ -27,12 +27,6 @@ public class NotificationController {
 	public void addNotification(@RequestBody Notification notify) {
 		service.addNotification(notify);
 	}
-	@GetMapping("/security")
-	public CsrfToken getSecurity(HttpServletRequest request) {
-		return (CsrfToken) request.getAttribute("_csrf");
-		
-		
-	}
 	
 }
 
