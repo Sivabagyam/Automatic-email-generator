@@ -7,4 +7,6 @@ import com.zetheta.usermodel.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users,Integer>{
 
+	Users findByUserName(String username);
+
 }

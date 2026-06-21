@@ -11,20 +11,28 @@ import jakarta.persistence.Id;
 public class Notification {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	long id;
-	String eventType;
-	String message;
-	String channel;
-	String status;
-	LocalDate CreatedAt;
+	private long id;
+	private String eventType;
+	private String message;
+	private String channel;
+	private String status;
+	private LocalDate sentAt;
+	private int retryCount;
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	public String getEventType() {
 		return eventType;
+	}
+	public int getRetryCount() {
+		return retryCount;
+	}
+	public void setRetryCount(int retryCount) {
+		this.retryCount = retryCount;
 	}
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
@@ -47,11 +55,11 @@ public class Notification {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public LocalDate getCreatedAt() {
-		return CreatedAt;
+	public LocalDate getSentAt() {
+		return sentAt;
 	}
-	public void setCreatedAt(LocalDate createdAt) {
-		CreatedAt = createdAt;
-	} 
-
+	public void setSentAt(LocalDate sentAt) {
+		this.sentAt = sentAt;
+	}
+	
 }
